@@ -116,7 +116,7 @@
         <layout>
             <updates>
                 <company>
-                    <file>stableflow_company.xml</file>
+                    <file>company.xml</file>
                 </company>
             </updates>
         </layout>

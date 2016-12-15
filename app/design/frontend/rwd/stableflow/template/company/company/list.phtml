@@ -25,16 +25,7 @@
                         <div class="timeline-body-head-caption">
                             <a class="timeline-body-title font-blue-madison" href="javascript:;">Upper LED</a>
                             <div class="stars-rating stars-sm">
-                                <input type="radio" disabled="disabled" checked="checked" name="star-rating-19-5">
-                                <label for="star-rating-19-5" class="radio-label"></label>
-                                <input type="radio" disabled="disabled" checked="checked" name="star-rating-19-4">
-                                <label for="star-rating-19-4" class="radio-label"></label>
-                                <input type="radio" disabled="disabled" checked="checked" name="star-rating-19-3">
-                                <label for="star-rating-19-3" class="radio-label"></label>
-                                <input type="radio" disabled="disabled" checked="checked" name="star-rating-19-2">
-                                <label for="star-rating-19-2" class="radio-label"></label>
-                                <input type="radio" disabled="disabled" checked="checked" name="star-rating-19-1">
-                                <label for="star-rating-19-1" class="radio-label"></label>
+                                <?php echo $this->getRating($_company->getId())?>
                             </div>
                         </div>
                     </div>

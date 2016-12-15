@@ -6,7 +6,22 @@
  * Date: 12/9/16
  * Time: 12:07 PM
  */
+
 class Stableflow_Company_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setup{
+
+    protected function _prepareValues($attr){
+        $data = parent::_prepareValues($attr);
+        $data = array_merge($data, array(
+            'is_visible'                => $this->_getValue($attr, 'visible', 1),
+            'is_system'                 => $this->_getValue($attr, 'system', 1),
+            'input_filter'              => $this->_getValue($attr, 'input_filter', null),
+            'multiline_count'           => $this->_getValue($attr, 'multiline_count', 0),
+            'validate_rules'            => $this->_getValue($attr, 'validate_rules', null),
+            'data_model'                => $this->_getValue($attr, 'data', null),
+            'sort_order'                => $this->_getValue($attr, 'position', 0)
+        ));
+        return $data;
+    }
 
     public function getDefaultEntities(){
         $entities = array(
@@ -14,8 +29,8 @@ class Stableflow_Company_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setu
                 'entity_model' => 'company/company',
                 'attribute_model' => 'company/attribute',
                 'table' => 'company/company_entity',
-                'additional_attribute_table'     => 'company/eav_attribute',
-                'entity_attribute_collection'    => 'company/attribute_collection',
+                'additional_attribute_table' => 'company/eav_attribute',
+                'entity_attribute_collection' => 'company/attribute_collection',
                 'attributes' => array(
                     'name' => array(
                         'type' => 'varchar',
@@ -31,8 +46,6 @@ class Stableflow_Company_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setu
                         'user_defined' => true,
                         'default' => '',
                         'searchable' => true,
-                        'filterable' => false,
-                        'comparable' => false,
                         'visible_on_front' => true,
                         'unique' => false,
                     ),
@@ -50,8 +63,6 @@ class Stableflow_Company_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setu
                         'user_defined' => true,
                         'default' => '',
                         'searchable' => false,
-                        'filterable' => false,
-                        'comparable' => false,
                         'visible_on_front' => true,
                         'unique' => false,
                     ),
@@ -69,8 +80,6 @@ class Stableflow_Company_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setu
                         'user_defined' => true,
                         'default' => '',
                         'searchable' => false,
-                        'filterable' => false,
-                        'comparable' => false,
                         'visible_on_front' => true,
                         'unique' => false,
                     ),
@@ -81,6 +90,29 @@ class Stableflow_Company_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setu
                         'backend'                    => 'company/company_attribute_backend_image',
                         'required'                   => false,
                     ),
+                    // example start
+                    'manufacturer'       => array(
+                        'type'                       => 'int',
+                        'label'                      => 'Manufacturer',
+                        'input'                      => 'select',
+                        'required'                   => false,
+                        'user_defined'               => true,
+                        'searchable'                 => true,
+                        'filterable'                 => true,
+                        'comparable'                 => true,
+                        'visible_in_advanced_search' => true,
+                        'apply_to'                   => Mage_Catalog_Model_Product_Type::TYPE_SIMPLE,
+                    ),
+                    'visibility'         => array(
+                        'type'                       => 'int',
+                        'label'                      => 'Visibility',
+                        'input'                      => 'select',
+                        'source'                     => 'catalog/product_visibility',
+                        'default'                    => '4',
+                        'sort_order'                 => 12,
+                        'global'                     => Mage_Catalog_Model_Resource_Eav_Attribute::SCOPE_STORE,
+                    ),
+                    // example end
                     'company_code' => array(
                         'type' => 'varchar',
                         'backend' => '',
@@ -99,15 +131,6 @@ class Stableflow_Company_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setu
                         'comparable' => false,
                         'visible_on_front' => false,
                         'unique' => true,
-                    ),
-                    'email'              => array(
-                        'type'               => 'static',
-                        'label'              => 'Email',
-                        'input'              => 'text',
-                        'sort_order'         => 80,
-                        'validate_rules'     => 'a:1:{s:16:"input_validation";s:5:"email";}',
-                        'position'           => 80,
-                        'admin_checkout'    => 1
                     ),
                     'activity_id' => array(
                         'type'               => 'static',
