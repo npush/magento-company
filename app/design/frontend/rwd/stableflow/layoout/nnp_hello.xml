@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <default>
+        <remove name="header" />
+        <reference name="content">
+            <block type="hello/hello" name="block_hello" template="nnp/hello_template.phtml" >
+                <action method="setVolume"><url>volume/127</url></action>
+                <label>Volume lable</label>
+            </block>
+        </reference>
+    </default>
+</layout>
