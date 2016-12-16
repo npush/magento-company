@@ -10,7 +10,7 @@ class Stableflow_Company_Model_Resource_Address extends Mage_Eav_Model_Entity_Ab
 
     public function __construct(){
         $resource = Mage::getSingleton('core/resource');
-        $this->setType('company_company');
+        $this->setType('company_address');
         $this->setConnection(
             $resource->getConnection('company_read'),
             $resource->getConnection('company_write')

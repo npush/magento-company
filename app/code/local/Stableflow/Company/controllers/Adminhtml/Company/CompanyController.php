@@ -35,7 +35,7 @@ class Stableflow_Company_Adminhtml_CompanyController extends Mage_Adminhtml_Cont
             ->_title($this->__('Manage Companies'));
 
         $postId  = (int) $this->getRequest()->getParam('id');
-        $post    = Mage::getModel('stableflow_company/company')
+        $post    = Mage::getModel('company/company')
             ->setStoreId($this->getRequest()->getParam('store', 0));
 
         if ($postId) {
@@ -85,7 +85,7 @@ class Stableflow_Company_Adminhtml_CompanyController extends Mage_Adminhtml_Cont
         $company    = $this->_initPost();
         if ($companyId && !$company->getId()) {
             $this->_getSession()->addError(
-                Mage::helper('stableflow_company')->__('This company no longer exists.')
+                Mage::helper('company')->__('This company no longer exists.')
             );
             $this->_redirect('*/*/');
             return;
@@ -101,7 +101,7 @@ class Stableflow_Company_Adminhtml_CompanyController extends Mage_Adminhtml_Cont
         $this->loadLayout();
         if ($company->getId()) {
             if (!Mage::app()->isSingleStoreMode() && ($switchBlock = $this->getLayout()->getBlock('store_switcher'))) {
-                $switchBlock->setDefaultStoreName(Mage::helper('stableflow_company')->__('Default Values'))
+                $switchBlock->setDefaultStoreName(Mage::helper('company')->__('Default Values'))
                     ->setWebsiteIds($company->getWebsiteIds())
                     ->setSwitchUrl(
                         $this->getUrl(

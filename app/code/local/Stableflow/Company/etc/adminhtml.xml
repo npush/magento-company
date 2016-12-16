@@ -51,11 +51,11 @@
                         </children>
                     </system>
                     <company translate="title" module="company">
-                        <title>Blog</title>
+                        <title>Company Manager</title>
                         <children>
                             <new_company translate="title" module="company">
                                 <title>Add New company</title>
-                                <action>adminhtml/betterblog_post/new</action>
+                                <action>adminhtml/company_company/new</action>
                                 <sort_order>0</sort_order>
                             </new_company>
                             <company translate="title" module="company">

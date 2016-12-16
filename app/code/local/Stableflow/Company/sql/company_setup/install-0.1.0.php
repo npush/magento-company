@@ -48,20 +48,20 @@ $installer->addEntityType('company_address',Array(
 /**
  * Create all entity tables
  */
-$installer->createEntityTables(
+/*$installer->createEntityTables(
     $this->getTable('company/price_entity')
-);
+);*/
 
 /**
  * Add Entity type
  */
-$installer->addEntityType('company_price',Array(
+/*$installer->addEntityType('company_price',Array(
     'entity_model'          =>'company/price',
     'attribute_model'       =>'company/attribute',
     'table'                 =>'company/price_entity',
     'increment_model'       =>'eav/entity_increment_numeric',
     //'increment_per_store'   =>'0'
-));
+));*/
 
 /**
  * Create table 'company/eav_attribute'
@@ -88,11 +88,6 @@ $table = $installer->getConnection()
     ), 'Multiline Count')
     ->addColumn('validate_rules', Varien_Db_Ddl_Table::TYPE_TEXT, '64k', array(
     ), 'Validate Rules')
-    ->addColumn('is_system', Varien_Db_Ddl_Table::TYPE_SMALLINT, null, array(
-        'unsigned'  => true,
-        'nullable'  => false,
-        'default'   => '0',
-    ), 'Is System')
     ->addColumn('sort_order', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'unsigned'  => true,
         'nullable'  => false,
