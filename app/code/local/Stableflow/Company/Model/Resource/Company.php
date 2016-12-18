@@ -27,13 +27,15 @@ class Stableflow_Company_Model_Resource_Company extends Mage_Eav_Model_Entity_Ab
 
     protected function _getDefaultAttributes(){
         return [
+            'entity_id',
             'entity_type_id',
             'attribute_set_id',
             'created_at',
             'updated_at',
             'increment_id',
             'store_id',
-            'website_id'
+            'is_active'
+            //'website_id'
         ];
     }
 }
