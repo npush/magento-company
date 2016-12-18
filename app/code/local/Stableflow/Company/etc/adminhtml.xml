@@ -20,7 +20,7 @@
                     <action>adminhtml/company_company_attribute</action>
                     <sort_order>7</sort_order>
                 </company_attributes>
-                <settings module="stableflow_company" translate="title">
+                <settings module="company" translate="title">
                     <title>Settings</title>
                     <sort_order>1000</sort_order>
                     <action>adminhtml/system_config/edit/section/company</action>

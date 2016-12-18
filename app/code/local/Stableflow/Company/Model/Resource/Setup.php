@@ -219,7 +219,7 @@ class Stableflow_Company_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setu
                     ),
                 ),
             ),
-            'company_prices' => array(
+            /*'company_prices' => array(
                 'entity_model'                  => 'company/prices',
                 'attribute_model'               => 'company/attribute',
                 'table'                         => 'company/prices_entity',
@@ -243,7 +243,7 @@ class Stableflow_Company_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setu
 
                     ),
                 ),
-            ),
+            ),*/
         );
         return $entities;
     }

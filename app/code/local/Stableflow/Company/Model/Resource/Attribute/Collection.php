@@ -35,6 +35,7 @@ class Stableflow_Company_Model_Resource_Attribute_Collection extends Mage_Eav_Mo
      */
     protected function _getEavWebsiteTable()
     {
-        return $this->getTable('company/eav_attribute_website');
+        //return $this->getTable('company/eav_attribute_website');
+        return null;
     }
 }

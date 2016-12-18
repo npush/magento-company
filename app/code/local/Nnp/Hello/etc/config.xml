@@ -22,11 +22,32 @@
                 <resourceModel>hello_resource</resourceModel>
             </hello>
             <hello_resource>
-                <class>Nnpt_Hello_Model_Resource</class>
+                <class>Nnp_Hello_Model_Resource</class>
                 <entities>
                     <subscription>
                         <table>hello_subscription</table>
                     </subscription>
+                    <hello_entity>
+                        <table>hello_hello_entity</table>
+                    </hello_entity>
+                    <hello_entity_datetime>
+                        <table>hello_hello_entity_datetime</table>
+                    </hello_entity_datetime>
+                    <hello_entity_decimal>
+                        <table>hello_hello_entity_decimal</table>
+                    </hello_entity_decimal>
+                    <hello_entity_int>
+                        <table>hello_hello_entity_int</table>
+                    </hello_entity_int>
+                    <hello_entity_text>
+                        <table>hello_hello_entity_text</table>
+                    </hello_entity_text>
+                    <hello_entity_varchar>
+                        <table>hello_hello_entity_varchar</table>
+                    </hello_entity_varchar>
+                    <hello_entity_char>
+                        <table>hello_hello_entity_char</table>
+                    </hello_entity_char>
                 </entities>
             </hello_resource>
         </models>
@@ -44,7 +65,7 @@
             <hello_install>
                 <setup>
                     <module>Nnp_Hello</module>
-                    <class>Mage_Eav_Model_Entity_Setup</class>
+                    <class>Nnp_Hello_Model_Resource_Setup</class>
                 </setup>
                 <connection>
                     <use>core_setup</use>
@@ -53,6 +74,34 @@
         </resources>
     </global>
     <frontend>
+        <events>
+            <controller_action_layout_generate_xml_after>
+                <observers>
+                    <hello_generate_xml>
+                        <class>Nnp_Hello_Model_Observer</class>
+                        <method>showXml</method>
+                    </hello_generate_xml>
+                </observers>
+            </controller_action_layout_generate_xml_after>
+
+            <controller_action_layout_generate_blocks_after>
+                <observers>
+                    <hello_layout_generate>
+                        <class>Nnp_Hello_Model_Observer</class>
+                        <method>showLog</method>
+                    </hello_layout_generate>
+                </observers>
+            </controller_action_layout_generate_blocks_after>
+
+            <controller_action_layout_render_before>
+                <observers>
+                    <hello_layout_render>
+                        <class>Nnp_hello_Model_Observer</class>
+                        <method>showRenderer</method>
+                    </hello_layout_render>
+                </observers>
+            </controller_action_layout_render_before>
+        </events>
         <routers>
             <hello>
                 <use>standard</use>

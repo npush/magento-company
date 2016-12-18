@@ -6,15 +6,23 @@
  * Date: 12/9/16
  * Time: 11:58 AM
  */
-class Stableflow_Company_Model_Company_Resource_Company extends Mage_Eav_Model_Entity_Abstract{
+class Stableflow_Company_Model_Resource_Company extends Mage_Eav_Model_Entity_Abstract{
 
-    public function __construct(){
+    protected $_companyProductTable = null;
+
+    public function _construct(){
+        parent::_construct();
         $resource = Mage::getSingleton('core/resource');
         $this->setType('company_company');
         $this->setConnection(
             $resource->getConnection('company_read'),
             $resource->getConnection('company_write')
         );
+        //$this->_companyTable = $this->getTable('mageplaza_betterblog/post_category');
+    }
+
+    public function getMainTable(){
+        return $this->getEntityTable();
     }
 
     protected function _getDefaultAttributes(){

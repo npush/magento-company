@@ -10,8 +10,8 @@ class Stableflow_Company_IndexController extends Mage_Core_Controller_Front_Acti
 
     public function indexAction(){
         $companies = Mage::getModel('company/company')->getCollection()
-            ->addAttributeToSelect('title')
-            ->addAttributeToSelect('author');
+            ->addAttributeToSelect('name')
+            ->addAttributeToSelect('description');
         $companies->load();
         var_dump($companies);
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Stableflow_company>
+        <Stableflow_Company>
             <version>0.1.0</version>
-        </Stableflow_company>
+        </Stableflow_Company>
     </modules>
     <global>
         <models>
@@ -37,26 +37,32 @@
                     </company_entity_char>
 
                     <address_entity>
-                        <table>address_entity</table>
+                        <table>company_address_entity</table>
                     </address_entity>
                     <address_entity_datetime>
-                        <table>address_entity_datetime</table>
+                        <table>company_address_entity_datetime</table>
                     </address_entity_datetime>
                     <address_entity_decimal>
-                        <table>address_entity_decimal</table>
+                        <table>company_address_entity_decimal</table>
                     </address_entity_decimal>
                     <address_entity_int>
-                        <table>address_entity_int</table>
+                        <table>company_address_entity_int</table>
                     </address_entity_int>
                     <address_entity_text>
-                        <table>address_entity_text</table>
+                        <table>company_address_entity_text</table>
                     </address_entity_text>
                     <address_entity_varchar>
-                        <table>address_entity_varchar</table>
+                        <table>company_address_entity_varchar</table>
                     </address_entity_varchar>
                     <address_entity_char>
-                        <table>address_entity_char</table>
+                        <table>company_address_entity_char</table>
                     </address_entity_char>
+                    <eav_attribute>
+                        <table>company_eav_attribute</table>
+                    </eav_attribute>
+                    <company_products>
+                        <table>company_to_products</table>
+                    </company_products>
                 </entities>
             </company_resource>
         </models>
