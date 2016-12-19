@@ -67,24 +67,48 @@ class Stableflow_Company_Block_Adminhtml_Company_Grid extends Mage_Adminhtml_Blo
                 'index'     => 'post_title',
             )
         );
-
+        $this->addColumn(
+            'balance',
+            array(
+                'header'    => Mage::helper('company')->__('Balance'),
+                'align'     => 'left',
+                'index'     => 'post_title',
+                'width'     => '120px',
+            )
+        );
+        $this->addColumn(
+            'Type',
+            array(
+                'header'    => Mage::helper('company')->__('Type'),
+                'align'     => 'left',
+                'index'     => 'post_title',
+                'width'     => '120px',
+                'type'    => 'options',
+                'options' => Mage::getModel('catalog/product_visibility')->getOptionArray(),
+            )
+        );
+        $this->addColumn(
+            'activity',
+            array(
+                'header'    => Mage::helper('company')->__('Activity'),
+                'align'     => 'left',
+                'index'     => 'post_title',
+                'width'     => '120px',
+                'type'    => 'options',
+                'options' => array()
+            )
+        );
         $this->addColumn(
             'status',
             array(
                 'header'  => Mage::helper('company')->__('Status'),
                 'index'   => 'status',
                 'type'    => 'options',
+                'width'     => '120px',
                 'options' => array(
                     '1' => Mage::helper('company')->__('Enabled'),
                     '0' => Mage::helper('company')->__('Disabled'),
                 )
-            )
-        );
-        $this->addColumn(
-            'url_key',
-            array(
-                'header' => Mage::helper('company')->__('URL key'),
-                'index'  => 'url_key',
             )
         );
         $this->addColumn(
