@@ -130,18 +130,37 @@
             <modules>
                 <Stableflow_Company>
                     <files>
-                        <default>stableflow_company.csv</default>
+                        <default>Stableflow_Company.csv</default>
                     </files>
                 </Stableflow_Company>
             </modules>
         </translate>
     </frontend>
+    <adminhtml>
+        <layout>
+            <updates>
+                <company>
+                    <file>company.xml</file>
+                </company>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Stableflow_Company>
+                    <files>
+                        <default>Stableflow_Company.csv</default>
+                    </files>
+                </Stableflow_Company>
+            </modules>
+        </translate>
+    </adminhtml>
     <admin>
         <routers>
             <adminhtml>
                 <args>
                     <modules>
-                        <company before="Mage_Adminhtml">Stablefow_Company_Adminhtml</company>
+                        <Stableflow_Company before="Mage_Adminhtml">Stableflow_Company_Adminhtml</Stableflow_Company>
+                        <!--<company before="Mage_Adminhtml">Stableflow_Company_Adminhtml</company>-->
                     </modules>
                 </args>
             </adminhtml>

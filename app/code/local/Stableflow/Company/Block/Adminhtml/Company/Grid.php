@@ -20,9 +20,9 @@ class Stableflow_Company_Block_Adminhtml_Company_Grid extends Mage_Adminhtml_Blo
 
     protected function _prepareCollection(){
         $collection = Mage::getModel('company/company')
-            ->getCollection()
-            ->addAttributeToSelect('status')
-            ->addAttributeToSelect('url_key');
+            ->getCollection();
+                /*->addAttributeToSelect('status')
+                ->addAttributeToSelect('name');*/
 
         $adminStore = Mage_Core_Model_App::ADMIN_STORE_ID;
         $store = $this->_getStore();
@@ -60,7 +60,7 @@ class Stableflow_Company_Block_Adminhtml_Company_Grid extends Mage_Adminhtml_Blo
             )
         );
         $this->addColumn(
-            'post_title',
+            'name',
             array(
                 'header'    => Mage::helper('company')->__('Name'),
                 'align'     => 'left',

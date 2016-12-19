@@ -7,7 +7,7 @@
  * Time: 4:46 PM
  */
 
-class Stableflow_Company_Adminhtml_CompanyController extends Mage_Adminhtml_Controller_Action{
+class Stableflow_Company_Adminhtml_Company_CompanyController extends Mage_Adminhtml_Controller_Action{
 
     /**
      * constructor - set the used module name
@@ -29,7 +29,7 @@ class Stableflow_Company_Adminhtml_CompanyController extends Mage_Adminhtml_Cont
      * @return Mageplaza_BetterBlog_Model_Post
      * @author nick
      */
-    protected function _initPost()
+    protected function _initCompany()
     {
         $this->_title($this->__('Company'))
             ->_title($this->__('Manage Companies'));
@@ -82,7 +82,7 @@ class Stableflow_Company_Adminhtml_CompanyController extends Mage_Adminhtml_Cont
     public function editAction()
     {
         $companyId  = (int) $this->getRequest()->getParam('id');
-        $company    = $this->_initPost();
+        $company    = $this->_initCompany();
         if ($companyId && !$company->getId()) {
             $this->_getSession()->addError(
                 Mage::helper('company')->__('This company no longer exists.')
