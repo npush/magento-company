@@ -10,13 +10,13 @@
  * Date: 12/18/16
  *
  */
-class Stableflow_Company_Model_Resource_Company_Attribute_Collection extends Mage_Eav_Model_Resource_Entity_Attribute_Collection
+class Stableflow_Company_Model_Resource_Attribute_Collection extends Mage_Eav_Model_Resource_Entity_Attribute_Collection
 {
     /**
      * init attribute select
      *
      * @access protected
-     * @return Stableflow_Company_Model_Resource_Company_Attribute_Collection
+     * @return Stableflow_Company_Model_Resource_Attribute_Collection
      */
     protected function _initSelect()
     {

@@ -102,11 +102,11 @@
         <events>
             <page_block_html_topmenu_gethtml_before>
                 <observers>
-                    <company>
-                        <class>stableflow_company/observer</class>
+                    <company_add_menu_item>
+                        <class>Stableflow_Company_Model_Observer</class>
                         <method>addMenuItems</method>
                         <!--<method>addItemsToTopmenu</method>-->
-                    </company>
+                    </company_add_menu_item>
                 </observers>
             </page_block_html_topmenu_gethtml_before>
         </events>
