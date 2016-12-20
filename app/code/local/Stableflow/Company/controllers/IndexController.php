@@ -13,7 +13,24 @@ class Stableflow_Company_IndexController extends Mage_Core_Controller_Front_Acti
             ->addAttributeToSelect('name')
             ->addAttributeToSelect('description');
         $companies->load();
-        var_dump($companies);
+        //var_dump($companies);
+        foreach($companies as $company){
+            echo '<div>';
+            echo '<h3>'.$company->getName().'</h3>';
+            echo '<h3>'.$company->getDescription().'</h3>';
+            echo '<h3>'.$company->getActivity().'</h3>';
+            echo '</div>';
+        }
     }
 
+    public function addAction(){
+        /** @var  $companies Stableflow_Company_Model_Company */
+        $companies = Mage::getModel('company/company');
+        $companies->setName('Demo Company 2');
+        $companies->setDescription('Description ha ha ha 2');
+        $companies->setData('activity','3');
+        $companies->setData('type','3');
+        $companies->setData('url','http://magento.dev/company2');
+        $companies->save();
+    }
 }

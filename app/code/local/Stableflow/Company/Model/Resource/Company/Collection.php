@@ -9,7 +9,6 @@
 class Stableflow_Company_Model_Resource_Company_Collection extends Mage_Eav_Model_Entity_Collection_Abstract{
 
     protected function _construct(){
-        parent::_construct();
         $this->_init('company/company');
     }
 }

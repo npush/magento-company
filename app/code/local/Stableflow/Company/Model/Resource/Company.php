@@ -11,7 +11,7 @@ class Stableflow_Company_Model_Resource_Company extends Mage_Eav_Model_Entity_Ab
     protected $_companyProductTable = null;
 
     public function _construct(){
-        parent::_construct();
+        /** @var  $resource Mage_Core_Model_Resource */
         $resource = Mage::getSingleton('core/resource');
         $this->setType('company_company');
         $this->setConnection(
