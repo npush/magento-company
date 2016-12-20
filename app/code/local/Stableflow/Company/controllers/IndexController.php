@@ -27,7 +27,35 @@ class Stableflow_Company_IndexController extends Mage_Core_Controller_Front_Acti
         $this->loadLayout();
         $headBlock = $this->getLayout()->getBlock('head');
         if ($headBlock) {
-            $headBlock->setTitle('Companyes');
+            $headBlock->setTitle('Companies');
+        }
+        $this->renderLayout();
+    }
+
+    protected function _initCompany(){
+        $companyId = $this->getRequest()->getParam('id', 0);
+        $company = Mage::getModel('company/company')
+            //->setStoreId(Mage::app()->getStore()->getId())
+            ->load($companyId);
+        if (!$company->getId()) {
+            return false;
+        } /*elseif (!$company->getStatus()) {
+            return false;
+        }*/
+        return $company;
+    }
+
+    public function viewAction(){
+        $company = $this->_initCompany();
+        if (!$company) {
+            $this->_forward('no-route');
+            return;
+        }
+        Mage::register('current_company', $company);
+        $this->loadLayout();
+        $headBlock = $this->getLayout()->getBlock('head');
+        if ($headBlock) {
+            $headBlock->setTitle('Company view');
         }
         $this->renderLayout();
     }

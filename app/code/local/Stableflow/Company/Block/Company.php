@@ -8,20 +8,16 @@
  */
 class Stableflow_Company_Block_Company extends Mage_Core_Block_Template{
 
-    //protected $company = null;
-
-    public function _construct(){
-        parent::_construct();
-        /** @var  $company Stableflow_Company_Model_Company */
-        $company = Mage::getModel('company/company')->getCollection()
-            ->addAttributeToSelect('*');
-            //->addAttributeToFilter('status', 1);
-        $this->setCompany($company);
-    }
+    public function _construct(){}
 
     protected function _prepareLayout(){
         parent::_prepareLayout();
-        $this->getCompany()->load();
+        $id = $this->getCompany()->getId();
+        $this->setCompany(Mage::getModel('company/company')->load($id));
         return $this;
+    }
+
+    public function getCompany(){
+        return Mage::registry('current_company');
     }
 }

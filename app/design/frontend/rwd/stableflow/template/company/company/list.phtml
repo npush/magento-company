@@ -13,21 +13,21 @@
     <div class="portlet-title">
     </div>
     <div class="portlet-body ">
-        <?php if($_companies->getSize() > 0) : ?>
+        <?php if($_companies && $_companies->getSize() > 0) : ?>
             <?php foreach($_companies as $_company) :?>
                 <div class="timeline timeline-list">
                     <!-- TIMELINE ITEM -->
                     <div class="timeline-item">
                         <div class="timeline-badge">
-                            <a href="http://upper.com.ua" class="company-link">
+                            <a href="<?php echo $_company->getUrl()?>" class="company-link">
                                 <img src="<?php echo $_company->getImageUrl()?>" class="timeline-badge-userpic">
                             </a>
-                            <a href="http://upper.com.ua" class="link-md link-underline"><?php echo $_company->getUrl()?></a>
+                            <a href="<?php echo $_company->getUrl()?>" class="link-md link-underline"><?php echo $_company->getUrl()?></a>
                         </div>
                         <div class="timeline-body clearfix">
                             <div class="timeline-body-head">
                                 <div class="timeline-body-head-caption">
-                                    <a class="timeline-body-title font-blue-madison" href="javascript:;"><?php echo $_company->getName()?></a>
+                                    <a class="timeline-body-title font-blue-madison" href="javascript:;"><?php echo $this->escapeHtml($_company->getName())?></a>
                                     <div class="stars-rating stars-sm">
                                         <?php echo $this->getRating($_company->getId())?>
                                     </div>
@@ -36,7 +36,9 @@
                             <div class="timeline-body-content">
                                 <p><span class="bold"><?php echo $this->__('Type');?>: </span><?php echo $_company->getType()?></p>
                                 <p><span class="bold"><?php echo $this->__('Country');?>: </span><?php echo $_company->getCountry()?></p>
-                                <p><span class="font-grey-cascade"><?php echo $_company->getDescription()?><a href="<?php echo $_company->getMoreUrl()?>" class="link"><?php echo $this->__('More...');?></a></span></p>
+                                <p><span class="font-grey-cascade"><?php echo $this->escapeHtml($_company->getDescription())?>
+                                        <a href="<?php echo $_company->getMoreUrl()?>" class="link"><?php echo $this->__('More');?>...</a>
+                                    </span></p>
                             </div>
                         </div>
                     </div>
