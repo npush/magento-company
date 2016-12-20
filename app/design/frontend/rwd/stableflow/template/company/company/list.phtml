@@ -20,7 +20,7 @@
                     <div class="timeline-item">
                         <div class="timeline-badge">
                             <a href="<?php echo $_company->getUrl()?>" class="company-link">
-                                <img src="<?php echo $_company->getImageUrl()?>" class="timeline-badge-userpic">
+                                <img src="<?php echo $this->getImageUrl($_company)?>" class="timeline-badge-userpic">
                             </a>
                             <a href="<?php echo $_company->getUrl()?>" class="link-md link-underline"><?php echo $_company->getUrl()?></a>
                         </div>
@@ -37,7 +37,7 @@
                                 <p><span class="bold"><?php echo $this->__('Type');?>: </span><?php echo $_company->getType()?></p>
                                 <p><span class="bold"><?php echo $this->__('Country');?>: </span><?php echo $_company->getCountry()?></p>
                                 <p><span class="font-grey-cascade"><?php echo $this->escapeHtml($_company->getDescription())?>
-                                        <a href="<?php echo $_company->getMoreUrl()?>" class="link"><?php echo $this->__('More');?>...</a>
+                                        <a href="<?php echo $_company->getCompanyUrl()?>" class="link"><?php echo $this->__('More');?>...</a>
                                     </span></p>
                             </div>
                         </div>

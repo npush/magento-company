@@ -12,7 +12,7 @@
             </block>
         </reference>
     </company_index_index>
-    <company_index_view translate="label" module="company">
+    <company_company_view translate="label" module="company">
         <label>Company list</label>
         <update handle="page_left_menu"/>
         <reference name="content">
@@ -20,5 +20,5 @@
                 <block type="company/company_rating" name="company_rating" template="company/company/rating.phtml"/>
             </block>
         </reference>
-    </company_index_view>
+    </company_company_view>
 </layout>

@@ -7,7 +7,7 @@
  * Time: 5:35 PM
  */
 
-class Stableflow_Company_Block_Company_List extends Stableflow_Company_Block_Company{
+class Stableflow_Company_Block_Company_List extends Mage_Core_Block_Template{
 
     protected $company = null;
 
@@ -24,5 +24,9 @@ class Stableflow_Company_Block_Company_List extends Stableflow_Company_Block_Com
         parent::_prepareLayout();
         $this->getCompany()->load();
         return $this;
+    }
+
+    public function getImageUrl($company){
+        return Mage::getBaseUrl('media').'company/'.$company->getImage();
     }
 }

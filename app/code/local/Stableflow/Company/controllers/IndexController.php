@@ -29,45 +29,34 @@ class Stableflow_Company_IndexController extends Mage_Core_Controller_Front_Acti
         if ($headBlock) {
             $headBlock->setTitle('Companies');
         }
-        $this->renderLayout();
-    }
-
-    protected function _initCompany(){
-        $companyId = $this->getRequest()->getParam('id', 0);
-        $company = Mage::getModel('company/company')
-            //->setStoreId(Mage::app()->getStore()->getId())
-            ->load($companyId);
-        if (!$company->getId()) {
-            return false;
-        } /*elseif (!$company->getStatus()) {
-            return false;
-        }*/
-        return $company;
-    }
-
-    public function viewAction(){
-        $company = $this->_initCompany();
-        if (!$company) {
-            $this->_forward('no-route');
-            return;
-        }
-        Mage::register('current_company', $company);
-        $this->loadLayout();
-        $headBlock = $this->getLayout()->getBlock('head');
-        if ($headBlock) {
-            $headBlock->setTitle('Company view');
+        if ($breadcrumbBlock = $this->getLayout()->getBlock('breadcrumbs')) {
+            $breadcrumbBlock->addCrumb(
+                'home',
+                array(
+                    'label' => Mage::helper('company')->__('Home'),
+                    'link' => Mage::getUrl(),
+                )
+            )->addCrumb(
+                'company_home',
+                array(
+                    'label' => Mage::helper('company')->__('Companies'),
+                    'link' =>  Mage::helper('core/url')->getCurrentUrl(),
+                )
+            );
         }
         $this->renderLayout();
     }
+
 
     public function addAction(){
         /** @var  $companies Stableflow_Company_Model_Company */
         $companies = Mage::getModel('company/company');
-        $companies->setName('Demo Company 2');
-        $companies->setDescription('Description ha ha ha 2');
-        $companies->setData('activity','3');
-        $companies->setData('type','3');
-        $companies->setData('url','http://magento.dev/company2');
+        $companies->setData('name','Demo Company 3');
+        $companies->setData('description','Description ha ha ha 4');
+        $companies->setData('activity','4');
+        $companies->setData('type','2');
+        $companies->setData('image','logo.jpeg');
+        $companies->setData('url','http://magento.dev/company3');
         $companies->save();
     }
 }
