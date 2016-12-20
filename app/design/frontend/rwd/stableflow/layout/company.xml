@@ -4,7 +4,7 @@
         <label>Company list</label>
         <update handle="page_left_menu"/>
         <reference name="content">
-            <block type="company/company_list" name="company_list" template="company/company/list.phtml">
+            <block type="company/company" name="company_list" template="company/company/list.phtml">
                 <block type="company/toolbar" name="toolbar" template="company/toolbar.phtml">
                     <block type="page/html_pager" name="pager"/>
                 </block>

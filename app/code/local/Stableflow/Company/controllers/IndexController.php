@@ -8,7 +8,7 @@
  */
 class Stableflow_Company_IndexController extends Mage_Core_Controller_Front_Action {
 
-    public function indexAction(){
+    public function indexoldAction(){
         $companies = Mage::getModel('company/company')->getCollection()
             ->addAttributeToSelect('name')
             ->addAttributeToSelect('description');
@@ -21,6 +21,15 @@ class Stableflow_Company_IndexController extends Mage_Core_Controller_Front_Acti
             echo '<h3>'.$company->getActivity().'</h3>';
             echo '</div>';
         }
+    }
+
+    public function indexAction(){
+        $this->loadLayout();
+        $headBlock = $this->getLayout()->getBlock('head');
+        if ($headBlock) {
+            $headBlock->setTitle('Companyes');
+        }
+        $this->renderLayout();
     }
 
     public function addAction(){

@@ -83,7 +83,7 @@ class Stableflow_Company_Block_Adminhtml_Company_Grid extends Mage_Adminhtml_Blo
                 'index'     => 'type',
                 'width'     => '120px',
                 'type'    => 'options',
-                'options' => Mage::getModel('catalog/product_visibility')->getOptionArray(),
+                'options' => Mage::getModel('company/company_attribute_source_type')->toOptionArray(),
             )
         );
         $this->addColumn(

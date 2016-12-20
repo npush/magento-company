@@ -6,7 +6,22 @@
  * Date: 12/9/16
  * Time: 5:33 PM
  */
-class Stableflow_Company_Block_Company extends Mage_Core_Block_Abstract
-{
+class Stableflow_Company_Block_Company extends Mage_Core_Block_Template{
 
+    //protected $company = null;
+
+    public function _construct(){
+        parent::_construct();
+        /** @var  $company Stableflow_Company_Model_Company */
+        $company = Mage::getModel('company/company')->getCollection()
+            ->addAttributeToSelect('*');
+            //->addAttributeToFilter('status', 1);
+        $this->setCompany($company);
+    }
+
+    protected function _prepareLayout(){
+        parent::_prepareLayout();
+        $this->getCompany()->load();
+        return $this;
+    }
 }
