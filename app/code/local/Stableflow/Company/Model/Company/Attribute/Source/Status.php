@@ -35,4 +35,13 @@ class Stableflow_Company_Model_Company_Attribute_Source_Status extends  Mage_Eav
     public function toOptionArray(){
         return $this->getAllOptions();
     }
+
+    public function getOptionArray()
+    {
+        return array(
+            self::APPROVE => Mage::helper('company')->__('Approve'),
+            self::PENDING => Mage::helper('company')->__('Pending'),
+            self::DISABLE => Mage::helper('company')->__('Disable'),
+        );
+    }
 }

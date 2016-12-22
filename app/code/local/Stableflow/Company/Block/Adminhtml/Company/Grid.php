@@ -83,7 +83,7 @@ class Stableflow_Company_Block_Adminhtml_Company_Grid extends Mage_Adminhtml_Blo
                 'index'     => 'type',
                 'width'     => '120px',
                 'type'    => 'options',
-                'options' => Mage::getModel('company/company_attribute_source_type')->toOptionArray(),
+                'options' => Mage::getModel('company/company_attribute_source_type')->getOptionArray(),
             )
         );
         $this->addColumn(
@@ -94,7 +94,7 @@ class Stableflow_Company_Block_Adminhtml_Company_Grid extends Mage_Adminhtml_Blo
                 'index'     => 'activity',
                 'width'     => '120px',
                 'type'    => 'options',
-                'options' => array()
+                'options' => Mage::getModel('company/company_attribute_source_activity')->getOptionArray(),
             )
         );
         $this->addColumn(
@@ -104,10 +104,7 @@ class Stableflow_Company_Block_Adminhtml_Company_Grid extends Mage_Adminhtml_Blo
                 'index'   => 'status',
                 'type'    => 'options',
                 'width'     => '120px',
-                'options' => array(
-                    '1' => Mage::helper('company')->__('Enabled'),
-                    '0' => Mage::helper('company')->__('Disabled'),
-                )
+                'options' => Mage::getModel('company/company_attribute_source_status')->getOptionArray(),
             )
         );
         $this->addColumn(
