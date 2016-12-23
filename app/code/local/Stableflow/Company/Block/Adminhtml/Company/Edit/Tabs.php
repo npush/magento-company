@@ -45,7 +45,7 @@ class  Stableflow_Company_Block_Adminhtml_Company_Edit_Tabs extends Mage_Adminht
                 'content' => $this->getLayout()->createBlock(
                     'company/adminhtml_company_edit_tab_address'
                 )
-                //->setAttributes($attributes)
+                ->initForm()
                 ->toHtml(),
             )
         );
