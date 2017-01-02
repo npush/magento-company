@@ -12,6 +12,9 @@
             </custommenu>
         </helpers>
         <blocks>
+            <custommenu>
+                <class>Stableflow_CustomMenu_Block</class>
+            </custommenu>
             <adminhtml>
                 <rewrite>
                     <catalog_product_attribute_edit_tab_front>Stableflow_CustomMenu_Block_Adminhtml_Catalog_Product_Attribute_Edit_Tab_Front</catalog_product_attribute_edit_tab_front>
@@ -45,10 +48,19 @@
                     <add_position_field>
                         <type>model</type>
                         <class>Stableflow_CustomMenu_Model_Observer</class>
-                        <method>addPositionToAttribute</method>
+                        <method>addPositionToAttribute_</method>
                     </add_position_field>
                 </observers>
             </adminhtml_catalog_product_attribute_edit_prepare_form>
+            <adminhtml_block_html_before>
+                <observers>
+                    <add_position_field_front>
+                        <type>model</type>
+                        <class>Stableflow_CustomMenu_Model_Observer</class>
+                        <method>addPositionToAttribute</method>
+                    </add_position_field_front>
+                </observers>
+            </adminhtml_block_html_before>
         </events>
     </global>
 </config>

@@ -11,7 +11,9 @@
  *
  */
 class Stableflow_CustomMenu_Block_Adminhtml_Catalog_Product_Attribute_Edit_Tab_Front extends Mage_Adminhtml_Block_Catalog_Product_Attribute_Edit_Tab_Front {
+
     protected function _prepareForm(){
+        die('sdfsdf');
         parent::_prepareForm();
         $form = $this->getForm();
         $fieldset = $form->getElement('base_fieldset');
