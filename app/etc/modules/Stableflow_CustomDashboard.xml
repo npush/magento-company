@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <modules>
+        <Stableflow_CustomDashboard>
+            <codePool>local</codePool>
+            <active>true</active>
+        </Stableflow_CustomDashboard>
+    </modules>
+</config>

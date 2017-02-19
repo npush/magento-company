@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <modules>
+        <Stableflow_CustomDashboard>
+            <version>0.1.0</version>
+        </Stableflow_CustomDashboard>
+    </modules>
+    <global>
+        <blocks>
+            <custom_dashboard>
+                <class>Stableflow_CustomDashboard_Block</class>
+            </custom_dashboard>
+            <adminhtml>
+                <rewrite>
+                    <dashboard_grids>Stableflow_CustomDashboard_Block_Adminhtml_Grids</dashboard_grids>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <helpers>
+            <custom_dashboard>
+                <class>Stableflow_CustomDashboard_Helper</class>
+            </custom_dashboard>
+        </helpers>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <custom_dashboard>
+                    <file>custom_dashboard.xml</file>
+                </custom_dashboard>
+            </updates>
+        </layout>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Stableflow_CustomDashboard before="Mage_Adminhtml">Stableflow_CustomDashboard_Adminhtml</Stableflow_CustomDashboard>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

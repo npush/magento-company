@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<acl>
+    <resources>
+        <admin>
+            <children>
+                <system>
+                    <children>
+                        <config>
+                            <children>
+                                <custom_dashboard translate="title" module="custom_dashboard">
+                                    <title>Custom Dashboard</title>
+                                </custom_dashboard>
+                            </children>
+                        </config>
+                    </children>
+                </system>
+            </children>
+        </admin>
+    </resources>
+</acl>
