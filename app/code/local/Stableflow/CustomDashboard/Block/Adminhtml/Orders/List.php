@@ -10,12 +10,21 @@
  * Date: 2/19/17
  *
  */
-class Stableflow_CustomDashboard_Block_Adminhtml_Orders_List extends Mage_Adminhtml_Block_Dashboard_Grid{
+class Stableflow_CustomDashboard_Block_Adminhtml_Orders_List extends Mage_Adminhtml_Block_Widget_Grid{
 
-    public function __construct(){
+    /**
+     * Setting default for every grid on dashboard
+     *
+     */
+
+    public function __construct()
+    {
         parent::__construct();
         $this->setId('ordersListGrid');
+        $this->setTemplate('dashboard/grid.phtml');
+        $this->setDefaultLimit(15);
     }
+
 
     protected function _prepareCollection(){
 
@@ -30,7 +39,8 @@ class Stableflow_CustomDashboard_Block_Adminhtml_Orders_List extends Mage_Adminh
 //        $collection->addFieldToFilter('store_id', array(Mage::app()->getStore((int)$this->getParam('store'))->getId()));
         $collection->getSelect()
             ->columns('SUM(grand_total) as orders_sum_amount,COUNT(*) AS orders_qty')
-            ->group('main_table.status');
+            ->group('main_table.status')
+            ->order('main_table.status');
         $this->setCollection($collection);
 
         return parent::_prepareCollection();
