@@ -38,7 +38,7 @@ class  Stableflow_Company_Block_Adminhtml_Company_Edit_Tabs extends Mage_Adminht
                     ->toHtml(),
             )
         );
-        $this->addTab(
+/*        $this->addTab(
             'address',
             array(
                 'label'   => Mage::helper('company')->__('Company Address'),
@@ -48,7 +48,7 @@ class  Stableflow_Company_Block_Adminhtml_Company_Edit_Tabs extends Mage_Adminht
                 ->initForm()
                 ->toHtml(),
             )
-        );
+        );*/
         $this->addTab(
             'owner',
             array(
@@ -69,6 +69,17 @@ class  Stableflow_Company_Block_Adminhtml_Company_Edit_Tabs extends Mage_Adminht
                 )
                 //->setAttributes($attributes)
                 ->toHtml(),
+            )
+        );
+        $this->addTab(
+            'products',
+            array(
+                'label'   => Mage::helper('company')->__('Company Products List'),
+                'content' => $this->getLayout()->createBlock(
+                    'company/adminhtml_company_edit_tab_products'
+                )
+                    //->setAttributes($attributes)
+                    ->toHtml(),
             )
         );
 

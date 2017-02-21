@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <company translate="title">
+            <children>
+                <pricelists translate="title" module="stableflow_pricelists">
+                    <title>Price Lists</title>
+                    <action>adminhtml/pricelists</action>
+                    <sort_order>15</sort_order>
+                </pricelists>
+            </children>
+        </company>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <stableflow_pricelists translate="title" module="stableflow_pricelists">
+                                        <title>Price Lists</title>
+                                    </stableflow_pricelists>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <rulletka translate="title">
+                        <children>
+                            <stableflow_pricelists translate="title" module="stableflow_pricelists">
+                                <title>Price Lists</title>
+                                <sort_order>0</sort_order>
+                            </stableflow_pricelists>
+                        </children>
+                    </rulletka>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
