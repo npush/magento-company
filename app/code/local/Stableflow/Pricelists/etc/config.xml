@@ -28,7 +28,7 @@
                 <class>Stableflow_Pricelists_Model_Resource</class>
                 <entities>
                     <pricelist>
-                        <table>pricelist</table>
+                        <table>company_product_price_list</table>
                     </pricelist>
                 </entities>
             </pricelist_resource>

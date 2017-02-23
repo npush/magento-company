@@ -14,7 +14,7 @@ class Stableflow_Company_Block_Adminhtml_Company_Edit_Tab_Products extends Mage_
      */
     public function __construct(){
         parent::__construct();
-        $this->setTemplate('company/tab/addresses.phtml');
+        $this->setTemplate('company/tab/products.phtml');
     }
 
     /**
@@ -32,16 +32,14 @@ class Stableflow_Company_Block_Adminhtml_Company_Edit_Tab_Products extends Mage_
      *
      * @return Mage_Adminhtml_Block_Customer_Edit_Tab_Addresses
      */
-    public function initForm()
-    {
+    public function initForm(){
     }
 
     /**
      * get current entity
      *
      */
-    public function getCompany()
-    {
+    public function getCompany(){
         return Mage::registry('current_company');
     }
 
