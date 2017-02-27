@@ -34,8 +34,6 @@ class Mage_Shell_CompanyImport extends Mage_Shell_Abstract{
     protected $_basePath;
 
     public function run(){
-        $this->_init();
-        $this->uploadFile($this->_importImagePath . '10.png');
         if ($this->getArg('file')) {
             $this->_init();
             $path = $this->getArg('file');
@@ -43,7 +41,7 @@ class Mage_Shell_CompanyImport extends Mage_Shell_Abstract{
             if (false !== ($file = fopen($path, 'r'))) {
                 while (false !== ($data = fgetcsv($file, 10000, ',', '"'))) {
                     $this->addCompany($data);
-                    printf("Adding %s \n" . $data[self::COMPANY_NAME]);
+                    printf("Adding %s \n", $data[self::COMPANY_NAME]);
                 }
                 fclose($file);
             }
@@ -58,15 +56,35 @@ class Mage_Shell_CompanyImport extends Mage_Shell_Abstract{
     }
 
     public function addCompany($companyData){
-        $model = Mage::getModel('company/company');
+        array_walk($companyData, function(&$value){
+            $value = str_replace('\N', '',$value);
+        });
+        $_date = date_create_from_format('Y-M-d H:i:s', $companyData[self::COMPANY_CREATED_AT]);
+        $companyModel = Mage::getModel('company/company');
         $data = array(
             'entity_id'     => $companyData[self::COMPANY_ID],
             'name'          => stripslashes($companyData[self::COMPANY_NAME]),
-            'description'   => $companyData[self::COMPANY_DESCRIPTION],
+            'description'   => stripslashes($companyData[self::COMPANY_DESCRIPTION]),
+            'image'         => $this->uploadFile($companyData[self::COMPANY_LOGO_IMG]),
+            'created_at'    => $_date ? $_date : Varien_Date::now(),
+            'email'         => $companyData[self::COMPANY_EMAIL],
+            'url'           => $companyData[self::COMPANY_URL],
+            'address_id'    => $this->_addCompanyAddress($companyData),
         );
+        $companyModel->setData($data);
+        $companyModel->save();
+    }
 
-        $model->setData($data);
-        $model->save();
+    protected function _addCompanyAddress($address){
+        $addressModel = Mage::getModel('company/address');
+        $data = array(
+            'street'        => $address[self::COMPANY_ADDRESS],
+            'city'          => $address[self::COMPANY_CITY],
+            'telephone'     => $address[self::COMPANY_TEL],
+        );
+        $addressModel->setData($data);
+        $addressModel->save();
+        return $addressModel->getId();
     }
 
     public function getAttributeId($attribute, $value){
@@ -74,16 +92,18 @@ class Mage_Shell_CompanyImport extends Mage_Shell_Abstract{
     }
 
     public function uploadFile($file){
-        print_r($file);
         try {
-            $uploader = new Varien_File_Uploader($file);
-            $path = $this->_basePath;
+            $uploader = new Mage_ImportExport_Model_Import_Uploader($file);
+            $fileInfo = pathinfo($file);
+            $newFile = $fileInfo['basename'];
+            $dest = $uploader->getDispretionPath($newFile);
+            $path = $this->_basePath . $dest;
             if (!is_dir($path)) {
                 mkdir($path, 0777, true);
             }
-            $uploader->save($path, $file);
+            $uploader->save($path, $newFile);
             $newFilename = $uploader->getUploadedFileName();
-            echo $newFilename;
+            return "{$dest}/{$newFilename}";
         }catch(Exception $e){
             echo "Error when upload file";
         }

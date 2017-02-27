@@ -229,7 +229,7 @@ class Stableflow_Company_Adminhtml_Company_CompanyController extends Mage_Adminh
         } else {
             try {
                 foreach ($companyIds as $companyId) {
-                    $company = Mage::getSingleton('companyg/company')->load($companyId);
+                    $company = Mage::getSingleton('company/company')->load($companyId);
                     Mage::dispatchEvent(
                         'company_controller_company_delete',
                         array('company' => $company)
