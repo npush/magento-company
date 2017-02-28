@@ -30,6 +30,15 @@ class Mage_Shell_CompanyImport extends Mage_Shell_Abstract{
     const COMPANY_BALANCE = 16;
     const COMPANY_PARENT_COMPANY_ID = 17;
 
+    const COMPANY_PRODUCT_SKU = 0;
+    const COMPANY_ID_PRODUCT = 1;
+    const COMPANY_PRODUCT_PRICE = 2;
+    const COMPANY_PRODUCT_OPT_PRICE = 3;
+    const COMPANY_PRODUCT_INT_PRICE = 4;
+    const COMPANY_PRODUCT_MEASURE = 5;
+    const COMPANY_PRODUCT_EXIST = 6;
+    const COMPANY_PRODUCT_DATE = 7;
+
     protected $_importImagePath;
     protected $_basePath;
 
@@ -89,6 +98,26 @@ class Mage_Shell_CompanyImport extends Mage_Shell_Abstract{
 
     public function getAttributeId($attribute, $value){
 
+    }
+
+    public function addCompanyProduct($_data){
+        $productId = Mage::getModel('catalog/product')->getIdBySku($_data[self::COMPANY_PRODUCT_DATE]);
+        if($productId) {
+            $model = Mage::getModel('company/product');
+            $_date = date_create_from_format('Y-M-d H:i:s', $_data[self::COMPANY_CREATED_AT]);
+            $data = array(
+                'price' => $_data[self::COMPANY_PRODUCT_PRICE],
+                'price_int' => $_data[self::COMPANY_PRODUCT_INT_PRICE],
+                'price_wholesale' => $_data[self::COMPANY_PRODUCT_OPT_PRICE],
+                'measure' => $_data[self::COMPANY_PRODUCT_MEASURE],
+                'created_at' => $_date ? $_date : Varien_Date::now(),
+            );
+
+            $model->setData($data);
+            $model->save();
+            $companyProductId = $model->getId();
+
+        }
     }
 
     public function uploadFile($file){
