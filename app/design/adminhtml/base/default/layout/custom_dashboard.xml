@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<layout>
-    <adminhtml_orderinfo_index>
-        <block type="core/text_list" name="root" output="toHtml">
-            <block type="custom_dashboard/adminhtml_orders_list" name="adminhtml.custom_dashboard.orders.list"/>
-        </block>
-    </adminhtml_orderinfo_index>
-</layout>
