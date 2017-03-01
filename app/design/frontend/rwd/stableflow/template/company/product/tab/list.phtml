@@ -1,0 +1,16 @@
+<?php
+/**
+ * Created by nick
+ * Project magento.dev
+ * Date: 3/1/17
+ * Time: 2:17 PM
+ */
+?>
+<?php $companyId = $company->getId()?>
+
+<?php $productCollection = Mage::getModel('company/relation')->getCollection()->addFieldToFilter('company_id', '68');?>
+
+<?php echo count($productCollection)?>
+<?php foreach($productCollection as $productRelation):?>
+    <?php echo $productRelation->getProductId();?>
+<?php endforeach;?>

@@ -6,7 +6,7 @@
  * Date: 3/1/17
  * Time: 11:43 AM
  */
-class Stableflow_Company_Model_Relation_Relation extends Mage_Core_Model_Resource_Db_Abstract{
+class Stableflow_Company_Model_Resource_Relation extends Mage_Core_Model_Resource_Db_Abstract{
 
     public function _construct()
     {

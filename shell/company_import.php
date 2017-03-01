@@ -49,7 +49,8 @@ class Mage_Shell_CompanyImport extends Mage_Shell_Abstract{
             echo 'reading data from ' . $path . PHP_EOL;
             if (false !== ($file = fopen($path, 'r'))) {
                 while (false !== ($data = fgetcsv($file, 10000, ',', '"'))) {
-                    $this->addCompany($data);
+                    //$this->addCompany($data);
+                    $this->addCompanyProduct($data);
                     printf("Adding %s \n", $data[self::COMPANY_NAME]);
                 }
                 fclose($file);
@@ -67,6 +68,7 @@ class Mage_Shell_CompanyImport extends Mage_Shell_Abstract{
     public function addCompany($companyData){
         array_walk($companyData, function(&$value){
             $value = str_replace('\N', '',$value);
+            $value = str_replace('\\\\', '',$value);
         });
         $_date = date_create_from_format('Y-M-d H:i:s', $companyData[self::COMPANY_CREATED_AT]);
         $companyModel = Mage::getModel('company/company');
@@ -101,7 +103,7 @@ class Mage_Shell_CompanyImport extends Mage_Shell_Abstract{
     }
 
     public function addCompanyProduct($_data){
-        $productId = Mage::getModel('catalog/product')->getIdBySku($_data[self::COMPANY_PRODUCT_DATE]);
+        $productId = Mage::getModel('catalog/product')->getIdBySku($_data[self::COMPANY_PRODUCT_SKU]);
         if($productId) {
             $model = Mage::getModel('company/product');
             $_date = date_create_from_format('Y-M-d H:i:s', $_data[self::COMPANY_CREATED_AT]);
@@ -116,8 +118,8 @@ class Mage_Shell_CompanyImport extends Mage_Shell_Abstract{
             $model->setData($data);
             $model->save();
             $companyProductId = $model->getId();
-            $relation = Mage::getModel('company/company_to_products');
-            $relation->setData('company_id', $_data[self::COMPANY_PARENT_COMPANY_ID]);
+            $relation = Mage::getModel('company/relation');
+            $relation->setData('company_id', $_data[self::COMPANY_ID_PRODUCT]);
             $relation->setData('company_product_id', $companyProductId);
             $relation->setData('product_id', $productId);
             $relation->save();
