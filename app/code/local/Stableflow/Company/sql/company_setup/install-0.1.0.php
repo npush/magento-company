@@ -212,6 +212,12 @@ $installer->getConnection()->insertForce($installer->getTable('company/company_a
  */
 $table = $installer->getConnection()
     ->newTable($installer->getTable('company/company_to_products'))
+    ->addColumn('entity_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
+        'unsigned'  => true,
+        'nullable'  => false,
+        'primary'   => true,
+    ), 'Relation Id')
+    ->newTable($installer->getTable('company/company_to_products'))
     ->addColumn('company_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'unsigned'  => true,
         'nullable'  => false,

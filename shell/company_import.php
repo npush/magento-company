@@ -116,7 +116,11 @@ class Mage_Shell_CompanyImport extends Mage_Shell_Abstract{
             $model->setData($data);
             $model->save();
             $companyProductId = $model->getId();
-
+            $relation = Mage::getModel('company/company_to_products');
+            $relation->setData('company_id', $_data[self::COMPANY_PARENT_COMPANY_ID]);
+            $relation->setData('company_product_id', $companyProductId);
+            $relation->setData('product_id', $productId);
+            $relation->save();
         }
     }
 
