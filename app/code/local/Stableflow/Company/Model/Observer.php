@@ -15,7 +15,7 @@ class Stableflow_Company_Model_Observer extends Mage_Core_Model_Observer{
         $node = new Varien_Data_Tree_Node(array(
             'name'   => 'Companies',
             'id'     => 'companies-1',
-            'url'    => Mage::getUrl(), // point somewhere
+            'url'    => Mage::getUrl('company'), // point somewhere
         ), 'id', $tree, $menu);
 
         $menu->addChild($node);
